@@ -1,0 +1,32 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+int fib(int term);
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        long n, sum=0, i; 
+        long arr[40000000000000000];
+        scanf("%ld",&n);
+        
+        for(i=0;i<n;i++){
+            arr[i] = fib(i);
+            if(arr[i]%2==0){
+                sum = sum + arr[i];
+            }
+        }
+        printf("%ld\n", sum);
+    }
+    return 0;
+}
+
+int fib(int term){
+    if(term < 2)
+       return term;
+    return fib(term - 1) + fib(term - 2);
+}
