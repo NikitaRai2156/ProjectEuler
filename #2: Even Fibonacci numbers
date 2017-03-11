@@ -5,28 +5,33 @@
 #include <assert.h>
 #include <limits.h>
 #include <stdbool.h>
-int fib(int term);
+
 int main(){
     int t; 
     scanf("%d",&t);
     for(int a0 = 0; a0 < t; a0++){
-        long n, sum=0, i; 
-        long arr[40000000000000000];
+        long n;
+        long a=0, b=1, sum=0, i, sum1=0;     
         scanf("%ld",&n);
         
         for(i=0;i<n;i++){
-            arr[i] = fib(i);
-            if(arr[i]%2==0){
-                sum = sum + arr[i];
+                if(i<=1)
+                    sum=1;
+                else{
+                    sum = a+b;
+                    a=b;
+                    b=sum;
+                    }
+            
+                if(sum>n)
+                    break;
+                if(sum%2==0){
+                    sum1 = sum1 + sum;
+                    } 
+                
             }
-        }
-        printf("%ld\n", sum);
+        printf("%ld\n", sum1);
     }
+    
     return 0;
-}
-
-int fib(int term){
-    if(term < 2)
-       return term;
-    return fib(term - 1) + fib(term - 2);
 }
