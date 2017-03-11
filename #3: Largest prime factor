@@ -1,0 +1,33 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        long number; 
+        scanf("%ld",&number);
+        
+        long long div=2, ans = 0, maxFact;
+        while(number!=0){
+            if(number % div !=0)
+                div = div + 1;
+            else{
+                maxFact  = number;
+                number = number / div;
+
+            if(number == 1){
+                printf("%lld\n",maxFact);
+                ans = 1;
+                break;
+            }
+        }
+    }
+    }
+    return 0;
+}
