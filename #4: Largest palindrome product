@@ -1,0 +1,53 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+
+int a[6];
+
+void convertToString(int xy){
+    int i,t=100000;
+    for(i=0;i<6;i++){
+        a[i]=xy/t;
+        xy = xy % t;
+        t=t/10;
+    }
+}
+
+int check(){
+    int i;
+    for(i=0;i<3;i++){
+        if(a[i]!=a[6-i]){
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main(){
+    int t; 
+    scanf("%d",&t);
+    for(int a0 = 0; a0 < t; a0++){
+        int x,y,xy,status=0;
+        int i=0,j=0,p=0;
+        for(x=999;x>99;x--){
+            for(y=x;y>99;y--){
+                xy=x*y;
+                convertToString(xy);
+                status = check();
+                if(status==1){
+                    if(xy>p){
+                        p=xy;
+                        i=x;
+                        j=y;
+                }
+            }
+        }
+    }
+        printf("%d\n", p);
+    }
+    return 0;
+}
